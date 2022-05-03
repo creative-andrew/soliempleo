@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Throwable;
 use App\Models\Employer;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -68,13 +69,21 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        $data['logo']->store('logos', 'public');
+        try {
 
-        return Employer::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'logo' => $data['logo']->hashName()
-        ]);
+            $data['logo']->store('logos', 'public');
+            return Employer::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'logo' => $data['logo']->hashName()
+            ]);
+
+        } catch (Throwable $e) {
+            report($e);
+
+            return false;
+        }
+
     }
 }
