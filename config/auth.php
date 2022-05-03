@@ -62,7 +62,7 @@ return [
     'providers' => [
         'employers' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Employer::class,
+            'model' => App\Models\Employer::class
         ],
 
         // 'employers' => [
