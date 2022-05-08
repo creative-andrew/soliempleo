@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('employers_id')->references('id')->on('employers')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('employer_id')->references('id')->on('employers')->onUpdate('cascade')->onDelete('cascade');
             $table->string('keywords');
             $table->string('title');
             $table->string('location');

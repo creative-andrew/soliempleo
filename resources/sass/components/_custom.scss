@@ -1,0 +1,46 @@
+.nav-link {
+    &.btn.btn-primary {
+        color: white;
+    }
+
+    &.btn.btn-outline-secondary,
+    &.btn.btn-primary  {
+        &:hover {
+            color: white;
+        }
+    }
+}
+
+.hero {
+    height: 85vh;
+}
+.card-group > .card {
+    &.job-card {
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        text-decoration: none;
+        color: inherit;
+        flex: 00 33%;
+        text-align: center;
+        img {
+            border-radius:  50%;
+            width: 75px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        &:hover {
+            border: 1px solid #166EFD;
+        }
+    }
+}
+
+.job-type {
+    position: absolute;
+    top:25px;
+    left:0;
+    background: #166EFD;
+    color: white;
+    padding: 5px 10px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
