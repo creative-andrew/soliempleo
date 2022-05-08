@@ -1,19 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
 
     /**
-     * Show the application home page.
+     * Show the application dashboard page.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('dashboard');
+        $jobs = $request->user()->jobs()->get();
+        return view('dashboard.index', ['jobs' => $jobs]);
     }
 }
