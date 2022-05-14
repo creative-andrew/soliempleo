@@ -43,9 +43,7 @@
                             <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Descripción') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" class="form-control @error('password') is-invalid @enderror" name="description" required>
-                                    {{$job->description}}
-                                </textarea>
+                                <textarea id="description" class="form-control @error('password') is-invalid @enderror" name="description" required>{{$job->description}}</textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
