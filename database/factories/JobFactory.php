@@ -18,13 +18,12 @@ class JobFactory extends Factory
     public function definition()
     {
         return [
-	        'id' => $this->faker->randomDigit(),
 			'employer_id' => Employer::factory(),
-	        'keywords' => $this->faker->words,
-	        'title' => $this->faker->words,
-	        'description' => $this->faker->words,
-	        'location' => $this->faker->words,
-	        'type' => $this->faker->words
+	        'keywords' => $this->faker->word(),
+	        'title' => $this->faker->sentence(),
+	        'description' => $this->faker->paragraph(),
+	        'location' => $this->faker->word(),
+	        'type' => $this->faker->word()
         ];
     }
 }

@@ -48,16 +48,16 @@ class JobControllerTest extends TestCase {
 	}
 
 	public function test_job_deleted() {
-		$this->withoutExceptionHandling();
+
 
 		$employer = Employer::factory()->has( Job::factory()->count( 1 ))->create();
 		$job = $employer->jobs->first();
 
 		$employer2 = Employer::factory()->create();
 
-//		$response = $this->actingAs($employer2)->delete('/jobs/' . $job->id);
+		$response = $this->actingAs($employer2)->delete('/jobs/' . $job->id);
 
-//		$response->assertStatus(401);
+		$response->assertStatus(403);
 
 		$this->assertDatabaseCount( Job::class, 1 );
 	}

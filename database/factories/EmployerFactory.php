@@ -17,7 +17,6 @@ class EmployerFactory extends Factory
     public function definition()
     {
         return [
-            'id' => $this->faker->randomDigit(),
 	        'name' => $this->faker->name,
 	        'email' => $this->faker->email,
 	        'logo' => $this->faker->image,
