@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $jobs = Job::get();
+        $jobs = Job::orderBy('created_at')->get();
         return view('home', ['jobs' => $jobs]);
     }
 }

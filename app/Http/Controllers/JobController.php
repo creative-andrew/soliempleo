@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\JobRequest;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,18 +24,9 @@ class JobController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function store(Request $request)
+    public function store(JobRequest $request)
     {
-
-        $formFields = $request->validate([
-            'keywords' => 'required',
-            'title' => 'required',
-            'description' => 'required',
-            'location' => 'required',
-            'type' => 'required',
-        ]);
-
-        $request->user()->jobs()->create($formFields);
+		$request->user()->jobs()->create($request->validated());
 
         return redirect('/dashboard')->with('status', __('Empleo creado correctamente.'));
     }
@@ -55,19 +47,11 @@ class JobController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function update(Request $request, Job $job)
+    public function update(JobRequest $request, Job $job)
     {
         $this->authorize('deleteOrUpdate', $job);
 
-        $formFields = $request->validate([
-            'keywords' => 'required',
-            'title' => 'required',
-            'description' => 'required',
-            'location' => 'required',
-            'type' => 'required',
-        ]);
-
-        $job->update($formFields);
+        $job->update($request->validated());
 
         return redirect('/dashboard')->with('status', __('Empleo actualizado correctamente.'));
     }
