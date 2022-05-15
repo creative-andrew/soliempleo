@@ -17,6 +17,7 @@ class Job extends Model
     protected $fillable = [
         'keywords',
         'title',
+        'description',
         'location',
         'type'
     ];
